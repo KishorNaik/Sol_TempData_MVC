@@ -15,6 +15,13 @@ namespace Sol_TempData.Controllers
             this.TempData["Data"] = "Kishor";
 
             //return View();
+            return RedirectToAction("MyIndex");
+        }
+
+        public IActionResult MyIndex()
+        {
+            var data = this.TempData["Data"] as String;
+
             return RedirectToAction("Privacy");
         }
 

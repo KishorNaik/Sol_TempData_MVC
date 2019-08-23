@@ -26,16 +26,16 @@ namespace Sol_TempData
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => false;  // Set as False to enable TempData
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services
-                .AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddSessionStateTempDataProvider(); // Add Session State Temp Data Provide
 
-            services.AddSession(); // Add Session Middle ware
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddSessionStateTempDataProvider();
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +53,7 @@ namespace Sol_TempData
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseSession(); // Use Session Middle ware
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

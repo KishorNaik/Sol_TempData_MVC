@@ -12,25 +12,14 @@ namespace Sol_TempData.Controllers
     {
         public IActionResult Index()
         {
-            this.TempData["Data"] = "Kishor";
+            ViewBag.Data = TempData["Data"] as string;
 
-            //return View();
-            return RedirectToAction("MyIndex");
-        }
-
-        public IActionResult MyIndex()
-        {
-            var data = this.TempData["Data"] as String;
-
-            return RedirectToAction("Privacy");
+            return View();
         }
 
         public IActionResult Privacy()
         {
-            var data = this.TempData["Data"] as String;
-
-            //return View();
-            return RedirectToAction("Index", "RedirectNewHome");
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
